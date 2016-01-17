@@ -4,5 +4,8 @@ are unique to the machine on which they reside. They are provided publicly for a
 technical snippets from for their own use. My only disclaimer is thus, if you use it in any way, you must 
 accept and agree to the license described below.
 
-##License
+## License
+bash-scripts here at the Github repository is provided under version 2.0 of the [Apache License][].
+
+[Apache License]: http://www.apache.org/licenses/LICENSE-2.0
 

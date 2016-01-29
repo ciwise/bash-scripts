@@ -65,8 +65,11 @@ fi
 
 if
    cd /c/Program\ Files/Atlassian/Application\ Data/Confluence/backups 
-   tar -cvf /d/Backup/Filesystem/confluence/confluence-data-${NOW}.tar .
-   cd /d/Backup/
+#   tar -cvf /d/Backup/Filesystem/confluence/confluence-data-${NOW}.tar .
+FILE=$(ls -t | head -n1)
+
+   cp ${FILE} /d/Backup/Filesystem/confluence/confluence-data-${NOW}.zip
+#   cd /d/Backup/
 then 
    echo "3. Confluence filesystem backup completed.";
 else

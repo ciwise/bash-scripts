@@ -36,8 +36,7 @@ echo;
 
 if pg_dump --username=postgres confluence > /d/Backup/PostgreSQL/confluence/confluence-${NOW}.dump
 then
-   sleep 5
-   java -jar /d/Backup/google-drive-client-0.0.1-SNAPSHOT.jar --filename=D:\\Backup\\PostgreSQL\\confluence\\confluence-${NOW}.dump upload -p=0ByyBtZRbAvz8OTNLdmJmbnFySWM 
+   java -jar /d/Backup/google-drive-client-0.0.1-SNAPSHOT.jar --filename=D:\\Backup\\PostgreSQL\\confluence\\confluence-${NOW}.dump upload -p=Atlassian 
    echo;
    echo "1. Confluence database backup completed.";
    echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
@@ -54,8 +53,7 @@ fi
 
 if pg_dump --username=postgres jira > /d/Backup/PostgreSQL/jira/jira-${NOW}.dump
 then
-   sleep 5 
-   java -jar /d/Backup/google-drive-client-0.0.1-SNAPSHOT.jar --filename=D:\\Backup\\PostgreSQL\\jira\\jira-${NOW}.dump upload -p=0ByyBtZRbAvz8OTNLdmJmbnFySWM 
+   java -jar /d/Backup/google-drive-client-0.0.1-SNAPSHOT.jar --filename=D:\\Backup\\PostgreSQL\\jira\\jira-${NOW}.dump upload -p=Atlassian 
    echo "2. JIRA database backup completed.";
    echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
    echo;
@@ -81,8 +79,7 @@ FILE=$(ls -t | head -n1)
    cp ${FILE} /d/Backup/Filesystem/confluence/confluence-data-${NOW}.zip
 #   cd /d/Backup/
 then
-   sleep 5 
-   java -jar /d/Backup/google-drive-client-0.0.1-SNAPSHOT.jar --filename=D:\\Backup\\Filesystem\\confluence\\confluence-data-${NOW}.zip upload -p=0ByyBtZRbAvz8OTNLdmJmbnFySWM 
+   java -jar /d/Backup/google-drive-client-0.0.1-SNAPSHOT.jar --filename=D:\\Backup\\Filesystem\\confluence\\confluence-data-${NOW}.zip upload -p=Atlassian 
    echo "3. Confluence filesystem backup completed.";
    echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
    echo;
@@ -101,8 +98,7 @@ if
    tar -zcvf /d/Backup/Filesystem/jira/jira-data-${NOW}.tar.gz .
    cd /d/Backup/
 then
-   sleep 5 
-   java -jar /d/Backup/google-drive-client-0.0.1-SNAPSHOT.jar --filename=D:\\Backup\\Filesystem\\jira\\jira-data-${NOW}.tar.gz upload -p=0ByyBtZRbAvz8OTNLdmJmbnFySWM 
+   java -jar /d/Backup/google-drive-client-0.0.1-SNAPSHOT.jar --filename=D:\\Backup\\Filesystem\\jira\\jira-data-${NOW}.tar.gz upload -p=Atlassian 
    echo "4. JIRA filesystem backup completed.";
    echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
    echo;

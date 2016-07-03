@@ -23,7 +23,7 @@
 
 echo "############################################################";
 
-NOW=$(date +"%d%b%Y:%H%M")
+NOW=$(date +"%d%b%Y-%H%M")
 
 # -------------------------------------------------------------
 # Dumps 
@@ -35,9 +35,14 @@ echo;
 # ---
 
 if pg_dump --username=postgres confluence > /d/Backup/PostgreSQL/confluence/confluence-${NOW}.dump
-then 
+then
+   sleep 5
+   java -jar /d/Backup/google-drive-client-0.0.1-SNAPSHOT.jar --filename=D:\\Backup\\PostgreSQL\\confluence\\confluence-${NOW}.dump upload -p=0ByyBtZRbAvz8OTNLdmJmbnFySWM 
    echo;
    echo "1. Confluence database backup completed.";
+   echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
+   echo;
+   echo;
 else
    echo;
    echo "ERROR: Postgres dump failed with notification.";
@@ -48,8 +53,13 @@ fi
 # ---
 
 if pg_dump --username=postgres jira > /d/Backup/PostgreSQL/jira/jira-${NOW}.dump
-then 
+then
+   sleep 5 
+   java -jar /d/Backup/google-drive-client-0.0.1-SNAPSHOT.jar --filename=D:\\Backup\\PostgreSQL\\jira\\jira-${NOW}.dump upload -p=0ByyBtZRbAvz8OTNLdmJmbnFySWM 
    echo "2. JIRA database backup completed.";
+   echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
+   echo;
+   echo;
 else
    echo;
    echo "ERROR: Postgres dump failed with notification.";
@@ -70,9 +80,14 @@ FILE=$(ls -t | head -n1)
 
    cp ${FILE} /d/Backup/Filesystem/confluence/confluence-data-${NOW}.zip
 #   cd /d/Backup/
-then 
+then
+   sleep 5 
+   java -jar /d/Backup/google-drive-client-0.0.1-SNAPSHOT.jar --filename=D:\\Backup\\Filesystem\\confluence\\confluence-data-${NOW}.zip upload -p=0ByyBtZRbAvz8OTNLdmJmbnFySWM 
    echo "3. Confluence filesystem backup completed.";
-else
+   echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
+   echo;
+   echo;
+ else
    echo;
    echo "ERROR: Confluence filesystem backup failed with notification.";
    echo "############################################################";
@@ -85,12 +100,16 @@ if
    cd /c/Program\ Files/Atlassian/Application\ Data/JIRA/data
    tar -zcvf /d/Backup/Filesystem/jira/jira-data-${NOW}.tar.gz .
    cd /d/Backup/
-then 
+then
+   sleep 5 
+   java -jar /d/Backup/google-drive-client-0.0.1-SNAPSHOT.jar --filename=D:\\Backup\\Filesystem\\jira\\jira-data-${NOW}.tar.gz upload -p=0ByyBtZRbAvz8OTNLdmJmbnFySWM 
    echo "4. JIRA filesystem backup completed.";
-   echo "SUCCESS: Atlassian backups complete.";
-   echo "############################################################";
+   echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
+   echo;
+   echo;
 else
    echo;
    echo "ERROR: JIRA filesystem backup failed with notification.";
    echo "############################################################";
 fi 
+
